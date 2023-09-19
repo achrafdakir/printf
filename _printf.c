@@ -36,7 +36,7 @@ static void print_char_and_increment_count(char c, int *count)
  */
 int _printf(const char *format, ...)
 {
-	int count;
+	int count = 0;
 	va_list args;
 
 	va_start(args, format);
