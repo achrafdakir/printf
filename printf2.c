@@ -1,11 +1,9 @@
 #include "main.h"
-
-
 /**
  * print_number - prints an integer
  * @n: The integer to print
  */
-static void print_number(int n)
+static void _print_number(int n)
 {
     unsigned int i;
 
@@ -54,7 +52,7 @@ int _printf(const char *format, ...)
                 case 'i':
                 {
                     int d = va_arg(args, int);
-                    print_number(d);
+                    _print_number(d);
                     n++;
                     break;
                 }
