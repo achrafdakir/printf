@@ -1,76 +1,50 @@
 #include "main.h"
-
 /**
- * print_string_and_increment_count - helper function
- * @str: input
- * @count: input
+ * _printf - is a function that selects the correct function to print.
+ * @format: identifier to look for.
+ * Return: the length of the string.
  */
-
-static void print_string_and_increment_count(const char *str, int *count)
+int _printf(const char * const format, ...)
 {
-	while (*str != '\0')
-	{
-		putchar(*str);
-		(*count)++;
-		str++;
-	}
-}
+	convert_match m[] = {
+		{"%s", printf_string}, {"%c", printf_char},
+		{"%%", printf_37},
+		{"%i", printf_int}, {"%d", printf_dec}, {"%r", printf_srev},
+		{"%R", printf_rot13}, {"%b", printf_bin}, {"%u", printf_unsigned},
+		{"%o", printf_oct}, {"%x", printf_hex}, {"%X", printf_HEX},
+		{"%S", printf_exclusive_string}, {"%p", printf_pointer}
+	};
 
-/**
- * print_char_and_increment_count - helper function
- * @c: input
- * @count: input
- */
-
-static void print_char_and_increment_count(char c, int *count)
-{
-		putchar(c);
-		(*count)++;
-}
-
-/**
- * _printf - our function Printf
- * @format: the format string
- * @...: arguments
- * Return: the number of characters printed
- */
-int _printf(const char *format, ...)
-{
-	int count = 0;
 	va_list args;
+	int i = 0, j, len = 0;
 
 	va_start(args, format);
-	if (format == NULL)
+	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
-	while (*format != '\0')
+
+	do
 	{
-		if (*format == '%')
+		j = 13;
+		while (j >= 0)
 		{
-			format++;
-			if (*format == 'c')
+			if (m[j].id[0] == format[i] && m[j].id[1] == format[i + 1])
 			{
-				char c = va_arg(args, int);
-
-				print_char_and_increment_count(c, &count);
+				len += m[j].f(args);
+				i = i + 2;
+				break;
 			}
-			else if (*format == 's')
-			{
-				char *str = va_arg(args, char *);
-
-				print_string_and_increment_count(str, &count);
-			}
-			else if (*format == '%')
-				print_char_and_increment_count('%', &count);
-			else
-			{
-				print_char_and_increment_count('%', &count);
-				print_char_and_increment_count(*format, &count);
-			}
+			j--;
 		}
-		else
-			print_char_and_increment_count(*format, &count);
-		format++;
-	}
+
+		if (j < 0)
+		{
+			_putchar(format[i]);
+			len++;
+			i++;
+		}
+	} while (format[i] != '\0');
+
 	va_end(args);
-	return (count);
+	return (len);
 }
+
