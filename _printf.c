@@ -44,7 +44,7 @@ int _printf(const char *format, ...)
 	{
 		if (*format == '%')
 		{
-			formart++;
+			format++;
 			switch (*format)
 			{
 				case 'c':
@@ -66,7 +66,7 @@ int _printf(const char *format, ...)
 					break;
 				default:
 					print_char_and_increment_count('%', &count);
-					print_char_and_increment_count(*format, &count)
+					print_char_and_increment_count(*format, &count);
 					break;
 			}
 		}
