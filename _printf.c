@@ -40,34 +40,31 @@ int _printf(const char *format, ...)
 	va_list args;
 
 	va_start(args, format);
+	if (format == NULL)
+		return (-1);
 	while (*format != '\0')
 	{
 		if (*format == '%')
 		{
 			format++;
-			switch (*format)
+			if (*format == 'c')
 			{
-				case 'c':
-				{
-					char c = va_arg(args, int);
+				char c = va_arg(args, int);
 
-					print_char_and_increment_count(c, &count);
-				}
-				break;
-				case 's':
-				{
-					char *str = va_arg(args, char *);
+				print_char_and_increment_count(c, &count);
+			}
+			else if (*format == 's')
+			{
+				char *str = va_arg(args, char *);
 
-					print_string_and_increment_count(str, &count);
-				}
-				break;
-				case '%':
-					print_char_and_increment_count('%', &count);
-					break;
-				default:
+				print_string_and_increment_count(str, &count);
+			}
+			else if (*format == '%')
+				print_char_and_increment_count('%', &count);
+			else
+			{
 					print_char_and_increment_count('%', &count);
 					print_char_and_increment_count(*format, &count);
-					break;
 			}
 		}
 		else
