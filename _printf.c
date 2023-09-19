@@ -4,15 +4,23 @@
  * print_string_and_increment_count - helper function
  * @str: input
  * @count: input
+ * Return: a pointer to the string
  */
 
-static void print_string_and_increment_count(const char *str, int *count)
+static int print_string_and_increment_count(const char *str, int *count)
 {
 	while (*str != '\0')
 	{
 		putchar(*str);
 		(*count)++;
 		str++;
+		return (*str);
+	}
+
+	if (str == NULL)
+
+	{
+		return (-1);
 	}
 }
 
@@ -20,12 +28,19 @@ static void print_string_and_increment_count(const char *str, int *count)
  * print_char_and_increment_count - helper function
  * @c: input
  * @count: input
+ * Return: the character
  */
 
 static void print_char_and_increment_count(char c, int *count)
 {
-	putchar(c);
-	(*count)++;
+	if (c != '\0')
+	{
+		putchar(c);
+		(*count)++;
+		return (c);
+	}
+	else
+		return (-1);
 }
 
 /**
@@ -63,8 +78,8 @@ int _printf(const char *format, ...)
 				print_char_and_increment_count('%', &count);
 			else
 			{
-					print_char_and_increment_count('%', &count);
-					print_char_and_increment_count(*format, &count);
+				print_char_and_increment_count('%', &count);
+				print_char_and_increment_count(*format, &count);
 			}
 		}
 		else
