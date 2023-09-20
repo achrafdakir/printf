@@ -77,7 +77,7 @@ int _printf(const char *format, ...)
 					print_char_and_increment_count('%', &count);
 					if (*format)
 						print_char_and_increment_count(*format, &count);
-			}
+			} format++;
 		}
 		else
 		{
