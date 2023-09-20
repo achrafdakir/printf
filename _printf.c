@@ -10,7 +10,7 @@ static void print_string_and_increment_count(const char *str, int *count)
 {
 	while (*str != '\0')
 	{
-		putchar(*str);
+		_putchar(*str);
 		(*count)++;
 		str++;
 	}
@@ -24,7 +24,7 @@ static void print_string_and_increment_count(const char *str, int *count)
 
 static void print_char_and_increment_count(char c, int *count)
 {
-	putchar(c);
+	_putchar(c);
 	(*count)++;
 }
 
