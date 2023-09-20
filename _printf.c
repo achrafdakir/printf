@@ -80,8 +80,10 @@ int _printf(const char *format, ...)
 			}
 		}
 		else
+		{
 			print_char_and_increment_count(*format, &count);
-		format++;
+			format++;
+		}
 	}
 	va_end(args);
 	return (count);
