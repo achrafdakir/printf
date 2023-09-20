@@ -77,13 +77,11 @@ int _printf(const char *format, ...)
 					print_char_and_increment_count('%', &count);
 					if (*format)
 						print_char_and_increment_count(*format, &count);
-			} format++;
+			}
 		}
 		else
-		{
 			print_char_and_increment_count(*format, &count);
-			format++;
-		}
+		format++;
 	}
 	va_end(args);
 	return (count);
