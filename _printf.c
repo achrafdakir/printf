@@ -10,8 +10,14 @@ static void print_string_and_increment_count(const char *str, int *count)
 {
 	if (str == NULL)
 	{
-		(*count) += 6;
-		print_string_and_increment_count("(null)", count);
+		const char *nullStr = "(null)";
+
+		while (*nullStr != '\0')
+		{
+			putchar(*nullStr);
+			(*count)++;
+			nullStr++;
+		}
 	}
 	while (*str != '\0')
 	{
