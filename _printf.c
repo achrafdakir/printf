@@ -8,10 +8,10 @@
 
 static void print_string_and_increment_count(const char *str, int *count)
 {
-	if (stg == NULL)
+	if (str == NULL)
 	{
 		(*count) += 6;
-		print_string_and_increment_count("(null)", &count);
+		print_string_and_increment_count("(null)", count);
 	}
 	while (*str != '\0')
 	{
