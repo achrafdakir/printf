@@ -6,18 +6,11 @@
  * @count: input
  */
 
-static void print_string_and_increment_count(const char *str, int *count)
+static void print_string_and_increment_count(char *str, int *count)
 {
 	if (str == NULL)
 	{
-		const char *nullStr = "(null)";
-
-		while (*nullStr != '\0')
-		{
-			putchar(*nullStr);
-			(*count)++;
-			nullStr++;
-		}
+		str = "(null)";
 	}
 	while (*str != '\0')
 	{
