@@ -24,8 +24,6 @@ typedef struct format
 int _putchar(char c);
 int _printf(const char *format, ...);
 
-int printf_string(char *stg);
-int handle_number(long int number);
-int length(int number);
+
 
 #endif
