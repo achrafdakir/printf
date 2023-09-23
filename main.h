@@ -9,7 +9,7 @@
 int _printf(const char *format, ...);
 int _putchar(char c);
 int print_number(long int number);
-void print_binary(int n, int *count);
+void print_binary(unsigned int n, int *count);
 
 
 #endif
