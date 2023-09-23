@@ -4,7 +4,7 @@
  * @n: the unsigned int to print as binary
  * @count: pointer to count the characters printed
  */
-void print_binary(unsigned int n, int *count)
+void print_binary(int n, int *count)
 {
 
 	if (n == 0)
