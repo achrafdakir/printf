@@ -9,7 +9,7 @@ void test1(void);
  * Return: the length
  */
 
-int _print_number(unsigned long int n, char spec, int sign)
+int print_number2(unsigned long int n, char spec, int sign)
 {
 	unsigned long int m;
 	int count = 0, base_c = 0, index;
