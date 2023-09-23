@@ -67,6 +67,8 @@ int _printf(const char *format, ...)
 				print_char_and_increment_count('%', &count);
 			else if (*format == 'd' || *format == 'i')
 				count += print_number(va_arg(args, int));
+			else if (*format == 'b')
+				print_binary(va_arg(args, unsigned int), &count);
 			else
 			{
 					print_char_and_increment_count('%', &count);
@@ -76,7 +78,6 @@ int _printf(const char *format, ...)
 		else
 			print_char_and_increment_count(*format, &count);
 		format++;
-	}
-	va_end(args);
+	} va_end(args);
 	return (count);
 }
